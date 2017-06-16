@@ -141,6 +141,6 @@ export default class GoogleChooser extends React.Component {
 
   render() {
     const Component = this.props.component
-    return <Component onClick={this.onChoose} />
+    return <Component onChoose={this.onChoose} />
   }
 }
