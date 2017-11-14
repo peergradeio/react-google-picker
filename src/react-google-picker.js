@@ -38,6 +38,11 @@ export default class GoogleChooser extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      authLoaded: false,
+      pickerLoaded: false,
+    }
+
     this.onApiLoad = this.onApiLoad.bind(this);
     this.onChoose = this.onChoose.bind(this);
   }
@@ -69,8 +74,12 @@ export default class GoogleChooser extends React.Component {
   }
 
   onApiLoad() {
-    window.gapi.load('auth');
-    window.gapi.load('picker');
+    window.gapi.load('auth', {'callback': () => {
+      this.setState({authLoaded: true})
+    }});
+    window.gapi.load('picker', {'callback': () => {
+      this.setState({pickerLoaded: true})
+    }});
   }
 
   doAuth(callback) {
@@ -140,7 +149,8 @@ export default class GoogleChooser extends React.Component {
   }
 
   render() {
+    const { authLoaded, pickerLoaded } = this.state
     const Component = this.props.component
-    return <Component onChoose={this.onChoose} />
+    return <Component onChoose={this.onChoose} isReady={authLoaded && pickerLoaded} />
   }
 }
