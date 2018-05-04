@@ -1,5 +1,5 @@
 {
-  "name": "react-google-picker",
+  "name": "@peergrade/react-google-picker",
   "version": "0.0.8",
   "description": "Simple react wrapper for google picker API",
   "main": "dist/react-google-picker.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sdoomz/react-google-picker.git"
+    "url": "https://github.com/peergradeio/react-google-picker.git"
   },
   "keywords": [
     "react",
